@@ -1,0 +1,77 @@
+{
+  "name": "gg_fe",
+  "version": "1.0.0",
+  "description": "Alex's FE CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev:comment": "启动开发环境",
+    "eslint": "eslint --fix src --ext .ts --max-warnings=0",
+    "eslint:comment": "使用 ESLint 检查并自动修复 src 目录下所有扩展名为 .ts 的文件",
+    "prettier": "prettier --write \"src/**/*.ts\"",
+    "prettier:comment": "自动格式化 src 目录下的所有 .ts 文件",
+    "build": "yarn eslint && yarn prettier && rimraf lib && tsc --build",
+    "build:comment": "构建"
+  },
+  "keywords": [],
+  "author": "GGGAlex <Ausalexfighting@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
+    "@types/console-clear": "^1.1.2",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.11.4",
+    "@types/prompts": "^2.0.14",
+    "@types/resolve": "^1.20.6",
+    "@types/shelljs": "^0.8.15",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "console-clear": "^1.1.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^8.0.0",
+    "prompts": "^2.4.2",
+    "resolve": "1.20.0",
+    "shelljs": "^0.8.5"
+  },
+  "bin": {
+    "gg": "./bin/gg_fe.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run eslint",
+      "npm run prettier"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GGGAlex/gg_fe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GGGAlex/gg_fe/issues"
+  },
+  "homepage": "https://github.com/GGGAlex/gg_fe#readme"
+}
