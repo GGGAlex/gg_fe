@@ -1,6 +1,7 @@
 import { throwCommonError } from "@/utils/errorHandler";
 import { logger } from "@/utils/logger";
 import { resolve } from "path";
+// @ts-expect-error no types for this package
 import { download } from "download-git-repo";
 
 interface ICloneBoilerplateProps {
